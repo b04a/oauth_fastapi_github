@@ -1,5 +1,3 @@
-from http.client import responses
-
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -9,7 +7,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 GITHUB_CLIENT_ID = "your GITHUB_CLIENT_ID"
-GITHUB_CLIENT_SECRET = "youre GITHUB_CLIENT_SECRET"
+GITHUB_CLIENT_SECRET = "your GITHUB_CLIENT_SECRET"
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
