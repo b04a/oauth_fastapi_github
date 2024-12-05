@@ -9,7 +9,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 GITHUB_CLIENT_ID = "your GITHUB_CLIENT_ID"
-GITHUB_CLIENT_SECRET = "your GITHUB_CLIENT_SECRET"
+GITHUB_CLIENT_SECRET = "youre GITHUB_CLIENT_SECRET"
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -46,4 +46,7 @@ async def callback(request: Request):
 
         user_info = user_info_response.json()
 
-        print(user_info['login'])
+        # Используем шаблон для отображения приветствия
+        return templates.TemplateResponse("greeting.html", {"request": request, "username": user_info['login']})
+    else:
+        return 'Error returned during authentication'
